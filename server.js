@@ -15,8 +15,13 @@ app.use(bodyParser.urlencoded({extended: false }));
 app.use(cookieParser()); 
 app.use(session({resave: true, saveUninitialized: true, secret: 'shhhh', cookie: { maxAge: 60000 }}));
  
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(__dirname + '/build'));
 
+router.route('/')
+    .get(function(req, res) {
+        res.send(File(__dirname + '/index.html'));
+    }); 
+    
 router.route('/contacts')
     .get(ContactCtrl.findAll)
     

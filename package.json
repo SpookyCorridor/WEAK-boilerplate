@@ -24,10 +24,12 @@
     "body-parser": "^1.15.1",
     "bootstrap": "^3.3.6",
     "cookie-parser": "^1.4.1",
-    "css-loader": "^0.23.0",
+    "css-loader": "^0.23.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.16.1",
     "node-sass": "^3.4.1",
     "node-uuid": "^1.4.7",
     "postcss-loader": "^0.9.1",
@@ -36,6 +38,7 @@
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "underscore": "^1.8.3",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.14"
   },
   "devDependencies": {

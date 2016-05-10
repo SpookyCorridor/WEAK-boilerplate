@@ -1,6 +1,7 @@
-const autoprefixer = require('autoprefixer')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const path = require('path')
+const autoprefixer = require('autoprefixer');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const sassLoaders = [
   'css-loader',
@@ -10,7 +11,7 @@ const sassLoaders = [
 
 const config = {
   entry: {
-    app: ['./src/index']
+    app: ['./client/app/app']
   },
   module: {
     loaders: [
@@ -22,16 +23,25 @@ const config = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'sass-loader'])
-      }
+      },
+      { test: /\.jsx?$/, exclude: /(node_modules|bower_components)/, loader: 'babel' },
+			{ test: /\.css$/, loader: 'style-loader!css-loader' },
+			{ test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+			{ test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000" },
+			{ test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
+			{ test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" }
     ]
   },
   output: {
     filename: '[name].js',
-    path: path.join(__dirname, './build'),
-    publicPath: '/build'
+    path: path.join(__dirname, './build')
   },
   plugins: [
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('[name].css'), 
+    new HtmlWebpackPlugin({
+      template: 'index.template.html',
+      inject: 'body'
+    }) 
   ],
   postcss: [
     autoprefixer({
@@ -44,4 +54,4 @@ const config = {
   }
 }
 
-module.exports = config
+module.exports = config;
