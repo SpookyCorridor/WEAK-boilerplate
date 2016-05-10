@@ -8,8 +8,8 @@
     "npm": "3.3.9"
   },
   "scripts": {
-    "build": "webpack",
-    "start": "node server/server.js"
+    "start": "webpack && nodemon server.js",
+    "test": "mocha api/tests"
   },
   "author": "Dylan Cairns",
   "license": "MIT",
