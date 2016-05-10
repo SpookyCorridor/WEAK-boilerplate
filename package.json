@@ -50,6 +50,7 @@
     "webpack": "^1.12.14"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.8.0",
     "chai": "^3.5.0",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
@@ -57,7 +58,10 @@
     "karma-coverage": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.0",
+    "karma-spec-reporter": "0.0.26",
+    "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
+    "ng-cache-loader": "0.0.15",
     "phantomjs-prebuilt": "^2.1.7",
     "supertest": "^1.2.0"
   }

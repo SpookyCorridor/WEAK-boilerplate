@@ -1,14 +1,14 @@
 'use strict'; 
 
-var express = require('express'); 
-var app = express(); 
-var router = express.Router(); 
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser'); 
-var session = require('express-session'); 
-var ContactCtrl = require('./api/controllers/contacts'); 
+const express = require('express'); 
+const app = express(); 
+const router = express.Router(); 
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser'); 
+const session = require('express-session'); 
+const ContactCtrl = require('./api/controllers/contacts'); 
 
-var port = process.env.PORT || 3000; 
+const port = process.env.PORT || 3000; 
     
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false }));

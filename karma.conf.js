@@ -1,77 +1,91 @@
-module.exports = function(config) {
+var preloaders = [
+  // Process test code with Babel
+  {test: /\.spec\.js$/, loader: 'babel'},
+]; 
+
+var loaders = [
+      {
+        test: /\.spec.js$/,
+        loader: 'babel', include: include,
+        exclude: 'node_modules'
+      },
+      {test: /\.js$/, loader: 'babel', include: include},
+			{ test: /\.css$/, loader: 'style-loader!css-loader' },
+			{ test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+			{ test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000" },
+			{ test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
+			{ test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
+            {test: /\.html$/, loader: 'ng-cache'}
+];
+
+var path = require('path');
+var include = [
+  path.resolve('./client')
+];
+// Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
+module.exports = function karmaConfig (config) {
   config.set({
-
-    // base path that will be used to resolve all patterns (eg. files, exclude)
+      
     basePath: '',
+    
+    frameworks: [
+      // Reference: https://github.com/karma-runner/karma-jasmine
+      // Set framework to jasmine
+      'jasmine'
+    ],
 
+    reporters: [
+      // Reference: https://github.com/mlex/karma-spec-reporter
+      // Set reporter to print detailed results to console
+      'spec',
 
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'commonjs'],
+      // Reference: https://github.com/karma-runner/karma-coverage
+      // Output code coverage files
+      'coverage'
+    ],
 
-
-    // list of files / patterns to load in the browser
     files: [
-        'api/tests/**.*.js'
+      // Grab all files in the app folder that contain .test.
+      'spec.js'
     ],
 
-
-    // list of files to exclude
-    exclude: [
-    ],
-
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'public/angular/**/*.js': ['coverage']
+      // Reference: http://webpack.github.io/docs/testing.html
+      // Reference: https://github.com/webpack/karma-webpack
+      // Convert files with webpack and load sourcemaps
+      'spec.js': ['webpack', 'sourcemap']
     },
 
-    coverageReporter: {
-        type: 'html',
-        dir: 'tests/coverage'
-    },
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
-
-    plugins: [
-        'karma-jasmine',
-        //'karma-chrome-launcher',  temp remove for performance 
-        'karma-phantomjs-launcher',
-        'karma-coverage'
+    browsers: [
+      // Run tests using PhantomJS
+      'PhantomJS'
     ],
 
+    singleRun: true,
 
-    // web server port
-    port: 9876,
+    // Configure code coverage reporter
+    coverageReporter: {
+      dir: 'build/coverage/',
+      type: 'html'
+    },
 
-
-    // enable / disable colors in the output (reporters and logs)
-    colors: true,
-
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
-
-
-    // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
-
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
-
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: Infinity
-  })
-}
+    webpack: {
+        debug: true,
+        devTool: 'source-map',
+        output: {
+            filename: 'spec',
+            path: path.join(__dirname, './build')
+        },
+        module: {
+            loaders: loaders,
+            preloaders: preloaders,
+            resolveLoader: {
+      modulesDirectories: [
+          './node_modules'
+      ]
+},
+        },
+        cache: true 
+    }
+  });
+};

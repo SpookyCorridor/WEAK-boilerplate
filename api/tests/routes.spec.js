@@ -1,7 +1,9 @@
-var supertest = require('supertest');
-var express = require('express');
-var expect = require('chai').expect;
-var server = supertest.agent('http://localhost:3000'); 
+'use strict'; 
+
+const supertest = require('supertest');
+const express = require('express');
+const expect = require('chai').expect;
+const server = supertest.agent('http://localhost:3000'); 
 
 describe('/api/contacts/', function(){
 

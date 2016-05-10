@@ -34,3 +34,5 @@ node_modules
 
 # webpack build
 build/ 
+
+.DS_Store

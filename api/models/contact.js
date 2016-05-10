@@ -1,7 +1,8 @@
-'use strict'; 
+'use strict';
+ 
 const _ = require('underscore'); 
 const Promise = require('bluebird'); 
-let session = require('express-session');
+const session = require('express-session');
 
 function isInteger(num) {; 
     return !isNaN(parseInt(num)); 
