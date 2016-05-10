@@ -3,11 +3,12 @@ class ContactController {
         
         this.contactResourceService = contactResourceService; 
         
-        this.contacts = {}; 
+        this.contacts = []; 
         
         $scope.$watch(() => this.contacts, function (newVal) {
             console.log('Name changed to ' + JSON.stringify(newVal));
         });
+        
         this.model = {
         }; 
         

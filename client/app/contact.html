@@ -1,16 +1,23 @@
-<section class="col-md-4">
-    <ul ng-repeat="contact in vm.contacts">
-        <li>{{ contact.id }}</li>
-        <li>{{ contact.name }}</li>
-        <li>{{ contact.address }}</li>
-        <li>{{ contact.age }}</li>
-        <a ui-sref="contact({id: contact._id})" ng-click="vm.update(contact)">update</a>
-        <a ui-sref="contacts" ng-confirm-click="Are you sure?" confirmed-click="vm.delete(contact)">delete</a>
-    </ul>
-</section>
 
-<form class="col-md-4"" name="vm.form" ng-submit="vm.onSubmit()" novalidate>
-    <formly-form model="vm.model" fields="vm.fields" form="vm.form">
-    <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">Add</button>
-</form>
+<section class="row center">
+    <div class="col-md-2"></div> 
+    <div class="col-md-4">
+        <h3>your contacts</h3>
+        <ul class="row" ng-repeat="contact in vm.contacts">
+            <li>{{ contact.id }}</li>
+            <li>{{ contact.name }}</li>
+            <li>{{ contact.address }}</li>
+            <li>{{ contact.age }}</li>
+            <a ui-sref="contact({id: contact._id})" ng-click="vm.update(contact)">update</a>
+            <a ui-sref="contacts" ng-confirm-click="Are you sure?" confirmed-click="vm.delete(contact)">delete</a>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h3>add contacts</h3>
+        <form class="row" name="vm.form" ng-submit="vm.onSubmit()" novalidate>
+            <formly-form model="vm.model" fields="vm.fields" form="vm.form">
+            <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">Add</button>
+        </form>
+    </div> 
+</section> 
 

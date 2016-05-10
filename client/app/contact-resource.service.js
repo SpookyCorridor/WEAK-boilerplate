@@ -47,7 +47,6 @@ class ContactResourceService {
    
    setCurrent(contact) {
        this.currentContact = contact; 
-       console.log(this.currentContact + ' yes'); 
    }
    
    getCurrent() {
