@@ -10,9 +10,9 @@ module.exports.findAll = function(req, res) {
 };
 
 module.exports.create = function(req, res) {
+    console.log('creating');
     Contact.validateContact(req.body)
         .then(function(result){
-            
             result._id = uuid.v1();
             
             if (!req.session.contacts) {
@@ -25,6 +25,7 @@ module.exports.create = function(req, res) {
             
         })
         .catch(function(err){
+            console.log(err); 
             res.json(err); 
         }); 
    

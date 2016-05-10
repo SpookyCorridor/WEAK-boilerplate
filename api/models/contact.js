@@ -3,8 +3,7 @@ const _ = require('underscore');
 const Promise = require('bluebird'); 
 let session = require('express-session');
 
-function isInteger(num) {
-    num = num.trim(); 
+function isInteger(num) {; 
     return !isNaN(parseInt(num)); 
 }
 
@@ -14,7 +13,7 @@ function sanitize(params) {
             id : params.id.toLocaleLowerCase(), 
             name : params.name.toLocaleLowerCase(), 
             address : params.address.toLocaleLowerCase(), 
-            age : parseInt(params.age.trim())
+            age : parseInt(params.age)
         };
      
      return validParams; 

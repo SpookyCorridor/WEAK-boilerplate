@@ -1,7 +1,17 @@
-class ContactFormController {
-    constructor(){
-        this.model = {}; 
+function contactForm() {
+    return {
+        restrict: 'E',
+        scope: {},
+        template: require('./contact-form.html'),
+        controller: ContactFormController,
+        controllerAs: 'vm'
+    };
+}
 
+class ContactFormController {
+    constructor(contactResourceService){
+        this.contactResourceService = contactResourceService; 
+        this.model = {}; 
         this.fields = [
             {
                 type: 'input',
@@ -48,9 +58,17 @@ class ContactFormController {
     }
     
     onSubmit () {
-        console.log(this.model); 
+        console.log(this.model)
+          this.contactResourceService.addContact(this.model)
+            
+            .then((result) => {
+               console.log(result);          
+            })
+            .catch((err) => {
+                console.log(err); 
+            });
     }
 }
 
-export default ContactFormController; 
-
+ContactFormController.$inject = ['contactResourceService']; 
+export default contactForm; 
