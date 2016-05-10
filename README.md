@@ -8,3 +8,10 @@ CRUD app with webpack and angular
 npm install
 npm start 
 ```
+
+# tests
+
+```bash
+npm test
+```
+
