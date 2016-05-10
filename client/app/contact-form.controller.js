@@ -1,17 +1,11 @@
-function contactForm() {
-    return {
-        restrict: 'E',
-        scope: {},
-        template: require('./contact-form.html'),
-        controller: ContactFormController,
-        controllerAs: 'vm'
-    };
-}
-
-class ContactFormController {
-    constructor(contactResourceService){
+class ContactController {
+    constructor($scope, $http, $state, contactResourceService, $stateParams, $location) {
+        
         this.contactResourceService = contactResourceService; 
-        this.model = {}; 
+        this.state = $state; 
+        this.model = {
+        }; 
+        
         this.fields = [
             {
                 type: 'input',
@@ -55,20 +49,31 @@ class ContactFormController {
             }
             
         ];
+        this.init(); 
     }
     
     onSubmit () {
-        console.log(this.model)
-          this.contactResourceService.addContact(this.model)
-            
-            .then((result) => {
-               console.log(result);          
+         this.model._id = this.current._id; 
+         this.contactResourceService.updateContact(this.model)
+            .then((result) =>  {
+                this.state.go('contacts');   
             })
             .catch((err) => {
                 console.log(err); 
-            });
+            }); 
+    }
+    
+    init () {
+        this.current = this.contactResourceService.getCurrent(); 
+        this.model = {
+            id: this.current.id,
+            name: this.current.name,
+            address: this.current.address,
+            age: this.current.age
+        }; 
     }
 }
 
-ContactFormController.$inject = ['contactResourceService']; 
-export default contactForm; 
+ContactController.$inject = ['$scope', '$http', '$state', 'contactResourceService', '$stateParams', '$location']; 
+
+export default ContactController; 

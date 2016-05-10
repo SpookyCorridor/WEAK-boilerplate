@@ -5,7 +5,6 @@ const _ = require('underscore');
 const uuid = require('node-uuid'); 
 
 module.exports.findAll = function(req, res) {
-
     res.json(req.session.contacts); 
 };
 
@@ -26,7 +25,7 @@ module.exports.create = function(req, res) {
         })
         .catch(function(err){
             console.log(err); 
-            res.json(err); 
+            res.send(err); 
         }); 
    
 };
@@ -42,7 +41,10 @@ module.exports.findById = function(req, res) {
 
 
 module.exports.editById = function(req, res) {
+    console.log('editing'); 
+    console.log(req.body); 
     let match = _.findWhere(req.session.contacts, {_id: req.body._id });
+    console.log(match); 
     if (!match) {
         res.send('no matches'); 
     }
@@ -52,6 +54,8 @@ module.exports.editById = function(req, res) {
 };
 
 module.exports.removeContact = function(req, res) {
+   console.log('deleting');
+   console.log(req); 
    let deleted = false; 
    let contact = req.body._id; 
    const contactsLength = req.session.contacts.length;
@@ -66,6 +70,7 @@ module.exports.removeContact = function(req, res) {
     
     if (!deleted) {
         res.send('contact not found'); 
-    }
-    res.json('item deleted'); 
+    } else {
+        res.json('item deleted');
+    } 
 }; 
