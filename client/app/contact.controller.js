@@ -5,10 +5,6 @@ class ContactController {
         
         this.contacts = []; 
         
-        $scope.$watch(() => this.contacts, function (newVal) {
-            console.log('Name changed to ' + JSON.stringify(newVal));
-        });
-        
         this.model = {
         }; 
         
@@ -19,7 +15,7 @@ class ContactController {
                 templateOptions: {
                     type: 'text',
                     label: 'Contact id',
-                    placeholder: 'Enter an id like "family or "friend"',
+                    placeholder: 'Enter an id like "family" or "friend"',
                     required: true
                 }
             },

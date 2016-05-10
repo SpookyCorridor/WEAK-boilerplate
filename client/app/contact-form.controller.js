@@ -13,7 +13,7 @@ class ContactController {
                 templateOptions: {
                     type: 'text',
                     label: 'Contact id',
-                    placeholder: 'Enter an id like "family or "friend"',
+                    placeholder: 'Enter an id like "family" or "friend"',
                     required: true
                 }
             },
