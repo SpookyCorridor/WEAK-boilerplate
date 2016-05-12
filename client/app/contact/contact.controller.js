@@ -1,5 +1,5 @@
 class ContactController {
-    constructor($scope, contactResourceService, $stateParams) {
+    constructor(contactResourceService, $stateParams) {
         
         this.contactResourceService = contactResourceService; 
         
@@ -85,6 +85,6 @@ class ContactController {
     }
 }
 
-ContactController.$inject = ['$scope', 'contactResourceService', '$stateParams']; 
+ContactController.$inject = ['contactResourceService', '$stateParams']; 
 
 export default ContactController; 

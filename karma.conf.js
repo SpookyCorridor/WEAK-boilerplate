@@ -1,21 +1,16 @@
 var preloaders = [
   // Process test code with Babel
-  {test: /\.spec\.js$/, loader: 'babel'},
+  {test: /\.spec.js$/, loader: 'babel', exclude: 'node_modules'},
 ]; 
 
 var loaders = [
-      {
-        test: /\.spec.js$/,
-        loader: 'babel', include: include,
-        exclude: 'node_modules'
-      },
-      {test: /\.js$/, loader: 'babel', include: include},
+      {test: /\.js$/, loader: 'babel', include: include, exclude: 'node_modules'},
 			{ test: /\.css$/, loader: 'style-loader!css-loader' },
 			{ test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
 			{ test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000" },
 			{ test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
 			{ test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
-            {test: /\.html$/, loader: 'ng-cache'}
+      {test: /\.html$/, loader: 'ng-cache'}
 ];
 
 var path = require('path');
@@ -46,14 +41,14 @@ module.exports = function karmaConfig (config) {
 
     files: [
       // Grab all files in the app folder that contain .test.
-      'spec.js'
+      'client/tests/tests.webpack.js'
     ],
 
     preprocessors: {
       // Reference: http://webpack.github.io/docs/testing.html
       // Reference: https://github.com/webpack/karma-webpack
       // Convert files with webpack and load sourcemaps
-      'spec.js': ['webpack', 'sourcemap']
+      'client/tests/tests.webpack.js': ['webpack', 'sourcemap']
     },
 
     browsers: [
@@ -73,7 +68,7 @@ module.exports = function karmaConfig (config) {
         debug: true,
         devTool: 'source-map',
         output: {
-            filename: 'spec',
+            filename: 'specc.js',
             path: path.join(__dirname, './build')
         },
         module: {
