@@ -12,7 +12,7 @@ then head to `http://localhost:3000` in your browser
 
 # tests
 
-run 
+### api tess:  
 
 ```bash
 npm start
@@ -22,6 +22,13 @@ in another tab:
 ```bash
 npm test
 ```
+
+### client tests
+
+```bash
+karma start
+``` 
+
 
 
 
