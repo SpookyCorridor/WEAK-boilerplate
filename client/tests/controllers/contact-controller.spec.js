@@ -42,8 +42,7 @@ describe('Contact controller', () => {
             }); 
             
            service = contactResourceService; 
-           controller = $controller('ContactController', {
-           });
+           controller = $controller('ContactController', {});
            
         });
     });
