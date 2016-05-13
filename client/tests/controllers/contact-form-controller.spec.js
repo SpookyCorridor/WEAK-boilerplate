@@ -64,7 +64,7 @@ describe('ContactForm controller', () => {
         it('should change state after updating contact', () => { 
             controller.onSubmit(controller.model); 
             scope.$digest(); 
-            expect(state.current.name).toBe(newState); 
+            expect(state.current.name).toBe('contacts'); 
         });
     });
 
