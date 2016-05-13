@@ -11,6 +11,7 @@ describe('ContactForm controller', () => {
     beforeEach(()=> {
 
        m_contactResourceSrvc = {}; 
+       
        fakeModel = {
            _id: 111,
             id: 'faker',
@@ -25,6 +26,10 @@ describe('ContactForm controller', () => {
         
        angular.mock.inject(($controller, contactResourceService, $q, _$state_, $rootScope) => {
             
+            /**
+             * contactResourceService methods 
+             */
+            
             m_contactResourceSrvc.updateContact = jasmine.createSpy('updateContact')
                 .and.callFake(()=>{
                     let defer = $q.defer();
@@ -33,18 +38,17 @@ describe('ContactForm controller', () => {
                 }); 
             
             m_contactResourceSrvc.getCurrent = jasmine.createSpy('setCurrent')
-                .and.returnValue({
-                    _id: 111,
-                    id: 'faker',
-                    name: 'Sir Fakes-a-lot',
-                    address: 'Hogwarts',
-                    age: '200'
-                }); 
+                .and.returnValue(fakeModel); 
+            
+            /**
+             * angular injections 
+             */
             
            service = contactResourceService; 
            controller = $controller('ContactFormController', {});
            state = _$state_;  
            scope = $rootScope.$new();  
+           
         });
     });
         

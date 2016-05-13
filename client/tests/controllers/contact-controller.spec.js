@@ -2,6 +2,7 @@ import Milton from './../../app/app';
 describe('Contact controller', () => {
     let controller; 
     let service;
+    let promise; 
     let m_contactResourceSrvc;  
     
     beforeEach(()=> {
@@ -13,33 +14,32 @@ describe('Contact controller', () => {
         });
         
        angular.mock.inject(($controller, contactResourceService, $q) => {
-           m_contactResourceSrvc.findAllContacts = jasmine.createSpy('findAllContacts')
-            .and.callFake(()=>{
+           
+           /**
+             * contactResourceService methods 
+             */
+            
+            promise = () => {
                 let defer = $q.defer();
                 defer.resolve({});
                 return defer.promise; 
-            });
+            };
+            
+           m_contactResourceSrvc.findAllContacts = jasmine.createSpy('findAllContacts')
+            .and.callFake(promise);
             
             m_contactResourceSrvc.addContact = jasmine.createSpy('addContact')
-            .and.callFake(()=>{
-                let defer = $q.defer();
-                defer.resolve({});
-                return defer.promise; 
-            }); 
+            .and.callFake(promise); 
             
             m_contactResourceSrvc.setCurrent = jasmine.createSpy('setCurrent')
-            .and.callFake(()=>{
-                let defer = $q.defer();
-                defer.resolve({});
-                return defer.promise; 
-            }); 
+            .and.callFake(promise); 
             
             m_contactResourceSrvc.deleteContact = jasmine.createSpy('deleteContact')
-            .and.callFake(()=>{
-                let defer = $q.defer();
-                defer.resolve({});
-                return defer.promise; 
-            }); 
+            .and.callFake(promise); 
+            
+            /**
+             * angular injections 
+             */
             
            service = contactResourceService; 
            controller = $controller('ContactController', {});
