@@ -14,16 +14,16 @@ describe('Contact controller', () => {
         });
         
        angular.mock.inject(($controller, contactResourceService, $q) => {
-           
-           /**
-             * contactResourceService methods 
-             */
-            
-            promise = () => {
+             
+           promise = () => {
                 let defer = $q.defer();
                 defer.resolve({});
                 return defer.promise; 
             };
+            
+           /**
+             * contactResourceService methods 
+             */ 
             
            m_contactResourceSrvc.findAllContacts = jasmine.createSpy('findAllContacts')
             .and.callFake(promise);

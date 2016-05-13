@@ -5,8 +5,10 @@ describe('ContactForm controller', () => {
     let service;
     let state; 
     let scope; 
+    
     let m_contactResourceSrvc;
-    let fakeModel;   
+    let fakeModel; 
+    let promise;   
     
     beforeEach(()=> {
 
@@ -25,17 +27,17 @@ describe('ContactForm controller', () => {
         });
         
        angular.mock.inject(($controller, contactResourceService, $q, _$state_, $rootScope) => {
-            
+            promise = () => {
+            let defer = $q.defer();
+            defer.resolve({});
+            return defer.promise; 
+        };
             /**
              * contactResourceService methods 
              */
             
             m_contactResourceSrvc.updateContact = jasmine.createSpy('updateContact')
-                .and.callFake(()=>{
-                    let defer = $q.defer();
-                    defer.resolve({});
-                    return defer.promise; 
-                }); 
+                .and.callFake(promise); 
             
             m_contactResourceSrvc.getCurrent = jasmine.createSpy('setCurrent')
                 .and.returnValue(fakeModel); 
