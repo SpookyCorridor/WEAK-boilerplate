@@ -27,11 +27,13 @@ describe('ContactForm controller', () => {
         });
         
        angular.mock.inject(($controller, contactResourceService, $q, _$state_, $rootScope) => {
+           
             promise = () => {
-            let defer = $q.defer();
-            defer.resolve({});
-            return defer.promise; 
-        };
+                let defer = $q.defer();
+                defer.resolve({});
+                return defer.promise; 
+            };
+            
             /**
              * contactResourceService methods 
              */

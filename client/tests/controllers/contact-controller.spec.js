@@ -3,6 +3,8 @@ describe('Contact controller', () => {
     let controller; 
     let service;
     let promise; 
+    let scope; 
+    
     let m_contactResourceSrvc;  
     
     beforeEach(()=> {
@@ -13,7 +15,7 @@ describe('Contact controller', () => {
             $provide.value('contactResourceService', m_contactResourceSrvc);
         });
         
-       angular.mock.inject(($controller, contactResourceService, $q) => {
+       angular.mock.inject(($controller, contactResourceService, $q, $rootScope) => {
              
            promise = () => {
                 let defer = $q.defer();
@@ -43,11 +45,12 @@ describe('Contact controller', () => {
             
            service = contactResourceService; 
            controller = $controller('ContactController', {});
+           scope = $rootScope.$new(); 
            
         });
     });
         
-        it('should try and gather all contacts in session ', () => {
+        it('should try and gather all contacts in session', () => {
            expect(service.findAllContacts).toHaveBeenCalled(); 
         });
         
@@ -64,6 +67,13 @@ describe('Contact controller', () => {
         it('should delete contacts', () => {
             controller.delete(1);
             expect(service.deleteContact).toHaveBeenCalledWith(1); 
+        });
+        
+        it('should gather contacts after a deletion', () => {
+           spyOn(controller, 'init');
+           controller.delete(1);
+           scope.$digest(); 
+           expect(controller.init).toHaveBeenCalled();  
         });
     });
 
