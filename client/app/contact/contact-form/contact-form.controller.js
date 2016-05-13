@@ -1,5 +1,5 @@
 class ContactController {
-    constructor($scope, $state, contactResourceService, $stateParams) {
+    constructor($state, contactResourceService, $stateParams) {
         
         this.contactResourceService = contactResourceService; 
         this.state = $state; 
@@ -53,7 +53,6 @@ class ContactController {
     }
     
     onSubmit () {
-         this.model._id = this.current._id; 
          this.contactResourceService.updateContact(this.model)
             .then((result) =>  {
                 this.state.go('contacts');   
@@ -66,6 +65,7 @@ class ContactController {
     init () {
         this.current = this.contactResourceService.getCurrent(); 
         this.model = {
+            _id: this.current._id, 
             id: this.current.id,
             name: this.current.name,
             address: this.current.address,
@@ -74,6 +74,6 @@ class ContactController {
     }
 }
 
-ContactController.$inject = ['$scope', '$state', 'contactResourceService', '$stateParams']; 
+ContactController.$inject = ['$state', 'contactResourceService', '$stateParams']; 
 
 export default ContactController; 
