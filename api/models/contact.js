@@ -40,7 +40,7 @@ exports.validateContact = function (params) {
 };
 
 exports.findAndReplace = function(object, value, replacevalue) {
-  for (var x in object) {
+  for (let x in object) {
     if (object.hasOwnProperty(x)) {
       if (typeof object[x] === 'object') {
         exports.findAndReplace(object[x], value, replacevalue);

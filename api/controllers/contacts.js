@@ -43,7 +43,7 @@ module.exports.findById = function(req, res) {
 
 module.exports.editById = function(req, res) {
     
-    let match = _.findWhere(req.session.contacts, {_id: req.body._id });
+    const match = _.findWhere(req.session.contacts, {_id: req.body._id });
     if (!match) {
         res.send('no matches'); 
     }
@@ -55,7 +55,7 @@ module.exports.editById = function(req, res) {
 module.exports.removeContact = function(req, res) {
     
    let deleted = false; 
-   let contact = req.body._id; 
+   const contact = req.body._id; 
    const contactsLength = req.session.contacts.length;
   
    for(let i = 0; i < contactsLength; i++) {

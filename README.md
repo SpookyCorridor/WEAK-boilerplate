@@ -12,7 +12,7 @@ then head to `http://localhost:3000` in your browser
 
 # tests
 
-### api tess:  
+### api test:  
 
 ```bash
 npm start
