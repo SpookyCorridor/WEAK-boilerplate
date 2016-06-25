@@ -12,7 +12,7 @@ import confirmClick from './directives/confirm-click';
 import routing from './contact/contact.config';  
 
 import 'bootstrap/dist/css/bootstrap.css';
-
+import '../assets/main.scss'; 
 
 export default angular.module('Milton', [
     uiRouter,
