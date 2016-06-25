@@ -22,7 +22,7 @@ const config = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'sass-loader'])
+        loader: "style!css!sass"
       },
       { test: /\.jsx?$/, exclude: /(node_modules|bower_components)/, loader: 'babel' },
 			{ test: /\.css$/, loader: 'style-loader!css-loader' },
@@ -56,6 +56,6 @@ const config = {
     extensions: ['', '.js', '.sass'],
     root: [path.join(__dirname, './src')]
   }
-}
+};
 
 module.exports = config;
