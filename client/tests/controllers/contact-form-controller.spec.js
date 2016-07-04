@@ -49,7 +49,7 @@ describe('ContactForm controller', () => {
              */
             
            service = contactResourceService; 
-           controller = $controller('ContactFormController', {});
+           controller = $controller('contactFormController', {});
            state = _$state_;  
            scope = $rootScope.$new();  
            

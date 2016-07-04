@@ -9,7 +9,7 @@
             <li>{{ contact.address }}</li>
             <li>{{ contact.age }}</li>
             <a ui-sref="contact({id: contact._id})" ng-click="vm.update(contact)">update</a>
-            <a ui-sref="contacts" ng-confirm-click="Are you sure?" confirmed-click="vm.delete(contact)">delete</a>
+            <a ui-sref="contacts" confirm-click="Are you sure?" confirmed-click="vm.delete(contact)">delete</a>
         </ul>
     </div>
     <div class="col-md-4">

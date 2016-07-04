@@ -44,7 +44,7 @@ describe('Contact controller', () => {
              */
             
            service = contactResourceService; 
-           controller = $controller('ContactController', {});
+           controller = $controller('contactController', {});
            scope = $rootScope.$new(); 
            
         });

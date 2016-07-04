@@ -6,15 +6,14 @@ export default function routing($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('contacts', {
             url: '/contacts', 
-            template: require('./contact.html'),
-            controller: 'ContactController',
+            template: require('./contact/contact.html'),
+            controller: 'contactController',
             controllerAs: 'vm'
          })
         .state('contact', {
             url: '/contact/:id',
             template: require('./contact-form/contact-form.html'),
-            controller: 'ContactFormController',
+            controller: 'contactFormController',
             controllerAs: 'vm'
         }); 
 }; 
-

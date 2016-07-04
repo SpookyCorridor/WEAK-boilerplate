@@ -53,7 +53,7 @@ const config = {
     })
   ],
   resolve: {
-    extensions: ['', '.js', '.sass'],
+    extensions: ['', '.js', '.sass', '.scss'],
     root: [path.join(__dirname, './src')]
   }
 };
