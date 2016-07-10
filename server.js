@@ -21,18 +21,6 @@ router.route('/')
     .get(function(req, res) {
         res.send(File(__dirname + '/index.html'));
     }); 
-    
-router.route('/contacts')
-    .get(ContactCtrl.findAll)
-    
-    .post(ContactCtrl.create);
-    
-router.route('/contact/:id')
-    .get(ContactCtrl.findById)
-    
-    .put(ContactCtrl.editById)
-    
-    .delete(ContactCtrl.removeContact); 
    
 app.use('/api', router); 
  

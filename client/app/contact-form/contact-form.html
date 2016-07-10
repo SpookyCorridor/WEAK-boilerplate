@@ -1,9 +1,0 @@
-<section class="row">
-    
-<h1 class="text-center">Update {{ vm.current.name }} </h1>
-
-<form class="col-md-4 col-md-offset-4" name="vm.form" ng-submit="vm.onSubmit()" novalidate>
-    <formly-form model="vm.model" fields="vm.fields" form="vm.form">
-    <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.form.$invalid">update</button>
-    <a ui-sref="contacts">cancel</a>
-</form>
