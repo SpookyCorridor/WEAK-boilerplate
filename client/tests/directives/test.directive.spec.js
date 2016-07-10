@@ -19,9 +19,17 @@ describe('test directive', ()=> {
         return compiledElement;
     }
 
-    it('should have span element', function () {
+    xit('should have span element', function () {
         var spanElement = directiveElem.find('span');
         expect(spanElement).toBeDefined();
         expect(spanElement.text()).toEqual('This span is appended from directive.');
+    });
+
+    it('should have updated text in span', () => {
+        scope.text = 'some other text';
+        scope.$digest();
+        let spanElement = directiveElem.find('span');
+        expect(spanElement).toBeDefined();
+        expect(spanElement.text()).toEqual(scope.text);
     });
 });
