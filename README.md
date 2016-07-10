@@ -1,33 +1,8 @@
-# intro 
+# Intro 
 
-CRUD app with webpack and angular 
+Boilerplate for Webpack Express Angular and Karma. 
 
-# installation 
-
-```bash
-npm install
-npm start 
-```
-then head to `http://localhost:3000` in your browser
-
-# tests
-
-### api test:  
-
-```bash
-npm start
-```
-in another tab: 
-
-```bash
-npm test
-```
-
-### client tests
-
-```bash
-karma start
-``` 
+Pushed from branch of other repository project out of laziness. 
 
 
 
